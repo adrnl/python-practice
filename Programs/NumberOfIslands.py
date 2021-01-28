@@ -14,28 +14,33 @@ def numberOfIslands(grid):
 # Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.
 # An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.
 # You may assume all four edges of the grid are all surrounded by water.
-#
+
 # Example1:
-#
+
 input = [
     ["1", "1", "1", "1", "0"],
     ["1", "1", "0", "1", "0"],
     ["1", "1", "0", "0", "0"],
     ["0", "0", "0", "0", "1"]
 ]
-output = 1
+output = 2
 # print(numberOfIslands(input))
 if numberOfIslands(input) != output:
     print("fail")
 else:
     print("pass")
-#
+
 # Example2:
-#
-# Input: grid = [
-#     ["1", "1", "0", "0", "0"],
-#     ["1", "1", "0", "0", "0"],
-#     ["0", "0", "1", "0", "0"],
-#     ["0", "0", "0", "1", "1"]
-# ]
-# Output: 3
+
+input = [
+    ["1", "1", "0", "0", "0"],
+    ["1", "1", "0", "0", "0"],
+    ["0", "0", "1", "0", "0"],
+    ["0", "0", "0", "1", "1"]
+]
+output = 3
+if numberOfIslands(input) != output:
+    print("fail")
+else:
+    print("pass")
+    
