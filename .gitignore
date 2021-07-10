@@ -103,7 +103,6 @@ celerybeat.pid
 
 # Environments
 workspace.xml
-.idea
 /venv
 .env
 .venv
@@ -112,6 +111,13 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
 
 # Spyder project settings
 .spyderproject
