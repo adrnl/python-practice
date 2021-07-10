@@ -103,6 +103,7 @@ celerybeat.pid
 
 # Environments
 workspace.xml
+.idea
 /venv
 .env
 .venv
