@@ -12,7 +12,7 @@ monthAbbrs = {
     "Sep": "September",
     "Oct": "October",
     "Nov": "November",
-    "Dec": "December"
+    "Dec": "December",
 }
 
 appointmentBook = {
