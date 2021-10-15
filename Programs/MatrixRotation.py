@@ -2,11 +2,9 @@ def rotate(matrix, clockwise):
     # x = 0
     # y = 0
     output = []
-
-    for x in range(len(matrix)):
-        list = []
-        for y in range(len(matrix)):
-
+    # for x in range(len(matrix)):
+    #     list = []
+    #     for y in range(len(matrix)):
 
     return output
 
