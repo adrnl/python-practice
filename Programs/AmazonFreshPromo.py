@@ -1,58 +1,22 @@
-# def isWinner(codes, items):
-#     if not codes:
-#         return 1
-#     if not items:
-#         return 0
-#
-#     for i in range(len(codes)):
-#         code = codes[i]
-#         codeLen = len(code)
-#         while items:
-#             matchLen = 0
-#             item = items.pop(0)
-#             if code[0] == "anything" or item == code[0]:
-#                 matchLen += 1
-#                 if matchLen == codeLen:
-#                     break
-#
-#                 for j in range(1, codeLen):
-#                     if len(items) == 0:
-#                         return 0
-#
-#                     item = items.pop(0)
-#                     if code[j] != item and item != "anything":
-#                         break
-#                     else:
-#                         matchLen += 1
-#
-#     return 1
+import re
 
+# Attempt 3, using regex
+def isWinner(codeList, shoppingCart):
+    cart = ' '.join(shoppingCart)
+    pattern = ''
+    for code in codeList:
+        segment = ' '.join(code)
+        segment = ' ' + segment
+        segment = segment.replace('anything', '\w+')
+        pattern += segment + '[\w\s]*'
 
-def isWinner(codes, items):
-    if not codes and items:
+    regex = re.compile(pattern)
+    result = regex.search(cart)
+    if result:
         return 1
-    if not items:
+    else:
         return 0
-    match = False
-    for i in range(len(codes)):
-        code = codes[i]
-        while items:
-            item = items.pop(0)
-            if code[0] == "anything" or item == code[0]:
-                patternLength = len(code)
-                match = True
-                for j in range(1, patternLength):
-                    if len(items) == 0:
-                        return 0
 
-                    item = items.pop(0)
-                    if code[j] != item and code[j] != "anything":
-                        match = False
-
-        if i + 1 < (len(codes)):
-            return 0
-
-    return 1
 
 codeList = [["apple", "apple"], ["banana", "anything", "banana"]]
 shoppingCart = ["orange", "apple", "apple", "banana", "orange", "banana"]
@@ -100,7 +64,8 @@ else:
 # Output
 # Return an integer 1 if the customer is a winner else return 0.
 # Note
-# 'anything' in the codeList represents that any fruit can be ordered in place of 'anything' in the group. 'anything' has to be something, it cannot be "nothing."
+# 'anything' in the codeList represents that any fruit can be ordered in place of 'anything' in the group.
+# 'anything' has to be something, it cannot be "nothing."
 # 'anything' must represent one and only one fruit.
 # If secret code list is empty then it is assumed that the customer is a winner.
 #
@@ -111,14 +76,16 @@ else:
 # Explanation:
 # codeList contains two groups - [apple, apple] and [banana, anything, banana].
 # The second group contains 'anything' so any fruit can be ordered in place of 'anything' in the shoppingCart.
-# The customer is a winner as the customer has added fruits in the order of fruits in the groups and the order of groups in the codeList is also maintained in the shoppingCart.
+# The customer is a winner as the customer has added fruits in the order of fruits in the groups and the order of
+# groups in the codeList is also maintained in the shoppingCart.
 # Example 2:
 #
 # Input: codeList = [[apple, apple], [banana, anything, banana]]
 # shoppingCart = [banana, orange, banana, apple, apple]
 # Output: 0
 # Explanation:
-# The customer is not a winner as the customer has added the fruits in order of groups but group [banana, orange, banana] is not following the group [apple, apple] in the codeList.
+# The customer is not a winner as the customer has added the fruits in order of groups but group [banana, orange, banana]
+# is not following the group [apple, apple] in the codeList.
 # Example 3:
 #
 # Input: codeList = [[apple, apple], [banana, anything, banana]] shoppingCart = [apple, banana, apple, banana, orange, banana]
@@ -130,4 +97,62 @@ else:
 # Input: codeList = [[apple, apple], [apple, apple, banana]] shoppingCart = [apple, apple, apple, banana]
 # Output: 0
 # Explanation:
-# The customer is not a winner as the first 2 fruits form group 1, all three fruits would form group 2, but can't because it would contain all fruits of group 1.
+# The customer is not a winner as the first 2 fruits form group 1, all three fruits would form group 2, but can't because
+# it would contain all fruits of group 1.
+
+# Attempt 1
+# def isWinner(codes, items):
+#     if not codes:
+#         return 1
+#     if not items:
+#         return 0
+#
+#     for i in range(len(codes)):
+#         code = codes[i]
+#         codeLen = len(code)
+#         while items:
+#             matchLen = 0
+#             item = items.pop(0)
+#             if code[0] == "anything" or item == code[0]:
+#                 matchLen += 1
+#                 if matchLen == codeLen:
+#                     break
+#
+#                 for j in range(1, codeLen):
+#                     if len(items) == 0:
+#                         return 0
+#
+#                     item = items.pop(0)
+#                     if code[j] != item and item != "anything":
+#                         break
+#                     else:
+#                         matchLen += 1
+#
+#     return 1
+
+# Attempt 2
+# def isWinner(codes, items):
+#     if not codes and items:
+#         return 1
+#     if not items:
+#         return 0
+#     match = False
+#     for i in range(len(codes)):
+#         code = codes[i]
+#         while items:
+#             item = items.pop(0)
+#             if code[0] == "anything" or item == code[0]:
+#                 patternLength = len(code)
+#                 match = True
+#                 for j in range(1, patternLength):
+#                     if len(items) == 0:
+#                         return 0
+#
+#                     item = items.pop(0)
+#                     if code[j] != item and code[j] != "anything":
+#                         match = False
+#
+#         if i + 1 < (len(codes)):
+#             return 0
+#
+#     return 1
